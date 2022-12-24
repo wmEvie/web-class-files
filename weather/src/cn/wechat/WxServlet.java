@@ -56,7 +56,7 @@ public class WxServlet extends HttpServlet{
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-	    System.out.println("¿ªÊ¼Ç©ÃûĞ£Ñé");
+	    System.out.println("å¼€å§‹ç­¾åæ ¡éªŒ");
 
 	    String signature = request.getParameter("signature");
 
@@ -78,25 +78,25 @@ public class WxServlet extends HttpServlet{
 
 	 
 
-	    //ÅÅĞò
+	    //æ’åº
 
 	    String sortString = sort(token, timestamp, nonce);
 
-	    //¼ÓÃÜ
+	    //åŠ å¯†
 
 	    String mytoken = SHA1(sortString);
 
-	    //Ğ£ÑéÇ©Ãû
+	    //æ ¡éªŒç­¾å
 
 	    if (mytoken != null && mytoken != "" && mytoken.equals(signature)) {
 
-	        System.out.println("Ğ£ÑéÇ©ÃûÍ¨¹ı");
+	        System.out.println("æ ¡éªŒç­¾åé€šè¿‡!");
 
 	        response.getWriter().println(echostr); 
 
 	    } else {
 
-	        System.out.println("Ğ£ÑéÇ©ÃûÊ§°Ü");
+	        System.out.println("æ ¡éªŒç­¾åå¤±è´¥");
 
 	    }
 
@@ -108,7 +108,7 @@ public class WxServlet extends HttpServlet{
 
 	/**
 
-	 * ÅÅĞò·½·¨
+	 * æ’åºæ–¹æ³•
 
 	 * @param token
 
@@ -288,7 +288,7 @@ public class WxServlet extends HttpServlet{
 
 		response.setCharacterEncoding("UTF-8");
 
-		System.out.println("ÇëÇó½øÈë");
+		System.out.println("è¯·æ±‚è¿›å…¥");
 
 		String responseMessage = "";
 
@@ -296,7 +296,7 @@ public class WxServlet extends HttpServlet{
 
 			Map<String,String> map = MessageHandlerUtil.parseXml(request);
 
-			System.out.println("¿ªÊ¼¹¹ÔìÏûÏ¢");
+			System.out.println("å¼€å§‹æ„é€ æ¶ˆæ¯");
 
 			//responseMessage = MessageHandlerUtil.buildXml(map);
 
@@ -306,7 +306,7 @@ public class WxServlet extends HttpServlet{
 
 			if(responseMessage.equals("")){
 
-				responseMessage = "Î´ÕıÈ·ÏìÓ¦";
+				responseMessage = "æœªæ­£ç¡®å“åº”";
 
 			}
 
@@ -314,7 +314,7 @@ public class WxServlet extends HttpServlet{
 
 			e.printStackTrace();
 
-			System.out.println("·¢ÉúÒì³£"+ e.getMessage());
+			System.out.println("å‘ç”Ÿå¼‚å¸¸"+ e.getMessage());
 
 		}
 
